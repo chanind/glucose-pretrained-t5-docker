@@ -1,0 +1,8 @@
+# download and export pretrained model
+FROM tensorflow/tensorflow:2.8.0 AS export_model
+RUN pip install t5==0.9.3
+WORKDIR /build
+RUN apt-get install wget
+RUN wget -q -O glucose-t5-large.tar https://comoltd.sharepoint.com/:u:/s/Glucose/Ef2aqIM5YEdFr4aRFDZ-HR0BkMSpNiAHxu6Nz3TnDavHAA?download=1
+RUN tar -xvf glucose-t5-large.tar && rm glucose-t5-large.tar
+RUN t5_mesh_transformer --model_dir="/build/large" --use_model_api --mode="export_predict" --export_dir="/build/model/"

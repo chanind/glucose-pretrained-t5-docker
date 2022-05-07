@@ -1,0 +1,6 @@
+# syntax = edrevo/dockerfile-plus
+INCLUDE+ Dockerfile.export-model
+
+# install exported model into tensorflow/serving image
+FROM tensorflow/serving:2.8.0-gpu
+COPY --from=export_model /build/model ./models/model
