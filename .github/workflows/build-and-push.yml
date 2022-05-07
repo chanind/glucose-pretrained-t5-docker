@@ -35,7 +35,7 @@ jobs:
           context: .
           push: true
           file: Dockerfile.cpu
-          tags: ${{ steps.meta.outputs.tags }}-cpu
+          tags: ${{ steps.meta.outputs.tags }}-cpu,latest
           labels: ${{ steps.meta.outputs.labels }}-cpu
       
       - name: Build and push GPU Docker image
