@@ -32,12 +32,12 @@ jobs:
       - name: Extract metadata (tags, labels) for Docker GPU images
         id: meta-gpu
         uses: docker/metadata-action@v4
-        flavor: |
-          latest=auto
-          prefix=
-          suffix=gpu,onlatest=true
         with:
           images: chanind/glucose-pretrained-t5
+          flavor: |
+            latest=auto
+            prefix=
+            suffix=gpu,onlatest=true
 
       - name: Build and push CPU Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
